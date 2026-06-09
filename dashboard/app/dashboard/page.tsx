@@ -8,6 +8,25 @@ import IncidentMap from "../components/IncidentMap";
 import IncidentTable from "../components/IncidentTable";
 import IncidentDetail from "../components/IncidentDetail";
 
+// Minimal type for the `reports` table rows returned by Supabase
+type ReportRow = {
+  id: string | number;
+  title?: string | null;
+  description?: string | null;
+  reporter_name?: string | null;
+  incident_type?: number | null;
+  severity?: number | null;
+  incident_time?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  synced?: boolean | null;
+  sync_attempts?: number | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+  user_id?: string | null;
+  images?: string[] | null;
+};
+
 // NOTE: Do NOT export `dynamic` from a client component/page.
 // export const dynamic = "force-dynamic";
 
@@ -66,7 +85,7 @@ export default function DashboardPage() {
         console.log("Test query result:", testQuery);
 
         // Now do the full query
-        let { data, error } = await supabase
+        const { data, error } = await supabase
           .from("reports")
           .select(
             [
@@ -93,9 +112,9 @@ export default function DashboardPage() {
 
         if (error) {
           console.error("Supabase fetch error - Full error object:", JSON.stringify(error, null, 2));
-          console.error("Error code:", (error as any)?.code);
-          console.error("Error message:", (error as any)?.message);
-          console.error("Error details:", (error as any)?.details);
+          console.error("Error code:", error?.code);
+          console.error("Error message:", error?.message);
+          console.error("Error details:", error?.details);
           setIsReady(true);
           return;
         }
@@ -103,8 +122,9 @@ export default function DashboardPage() {
         console.log("Raw data from Supabase (reports table):", data);
         console.log("Total records fetched:", data?.length ?? 0);
 
-        const mapped: Incident[] = (data ?? [])
-          .map((row: any) => {
+        const rows: ReportRow[] = Array.isArray(data) ? (data as unknown as ReportRow[]) : [];
+        const mapped: Incident[] = rows
+          .map((row) => {
             const incidentTime = row.incident_time ?? null;
             const createdAt = row.created_at ?? null;
             const timestamp = (incidentTime || createdAt || "") as string;
@@ -241,9 +261,9 @@ export default function DashboardPage() {
         <StatCard label="Critical (S4+)" value={critical.toString()} />
       </section>
 
-      <section className="grid grid-cols-1 lg:grid-cols-5 gap-4 h-[800px]">
+      <section className="grid grid-cols-1 lg:grid-cols-5 gap-4" style={{ height: 800 }}>
         <div className="lg:col-span-2 sticky top-0 h-fit">
-          <div className="h-[378px] bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
+          <div className="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden" style={{ height: 378 }}>
             <IncidentMap incidents={incidents} focusLocation={focusLocation} />
           </div>
           <div className="mt-4 bg-slate-900 rounded-xl border border-slate-800 p-4">

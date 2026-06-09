@@ -133,7 +133,7 @@ export default function App() {
                     // Fallback: If no session from SDK (maybe expired & offline), check storage manually
                     console.log('[App] No live session. Checking offline storage...')
                     // Note: This key depends on your Supabase Project ID
-                    const storageKey = 'sb-jvvfkmwdsbhpyxfwwkmh-auth-token'
+                    const storageKey = 'sb-zvfhnhpbcmfsipkcorzx-auth-token'
 
                     // We need to dinamically import/require storage because we are in App.tsx
                     // But we can just use the exposed getItem from our helper if we export it, or use AsyncStorage direct

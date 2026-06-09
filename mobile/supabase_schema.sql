@@ -23,10 +23,11 @@ CREATE TABLE public.reports (
 -- Enable Row Level Security (RLS)
 ALTER TABLE public.reports ENABLE ROW LEVEL SECURITY;
 
--- Policy: Users can see their own reports
-CREATE POLICY "Users can view their own reports" 
-ON public.reports FOR SELECT 
-USING (auth.uid() = user_id);
+-- Policy: Allow public read access to reports (for dashboard and guests)
+CREATE POLICY "Allow public read access to reports"
+ON public.reports FOR SELECT
+TO anon, authenticated
+USING (true);
 
 -- Policy: Users can insert their own reports
 CREATE POLICY "Users can insert their own reports" 
