@@ -1,5 +1,5 @@
-const express = require('express');
-const twilio = require('twilio');
+import express from 'express';
+import twilio from 'twilio';
 
 const app = express();
 app.use(express.json());

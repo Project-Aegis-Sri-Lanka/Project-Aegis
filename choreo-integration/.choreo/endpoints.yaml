@@ -6,3 +6,4 @@ endpoints:
     networkVisibilities:
       - Public
     context: /aegis
+    schemaFilePath: openapi.yaml
