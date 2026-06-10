@@ -2,7 +2,7 @@
 org = "nidula"
 name = "aegis_disaster_alert"
 version = "0.1.0"
-distribution = "2201.8.0"
+distribution = "2201.12.3"
 
 [build-options]
 observabilityIncluded = true
