@@ -1,0 +1,49 @@
+{
+  "last_build_time": 1781063862441,
+  "last_update_time": 1781063862441,
+  "last_bal_toml_update_time": 1781063444790,
+  "distribution_version": "2201.13.4",
+  "last_modified_time": {
+    "aegis_disaster_alert": 1781063841045
+  },
+  "last_build_options": {
+    "compilationOptions": {
+      "observabilityIncluded": true,
+      "dumpBir": false,
+      "cloud": "",
+      "dumpGraph": false,
+      "dumpRawGraphs": false
+    }
+  },
+  "src_meta_info": [
+    {
+      "file": "/Users/nidula/Desktop/project Aegis/choreo-integration/webhook.bal",
+      "hash": "5d2622682cba1b46b5c10404a4f8e8c33868763cefc6f509b2370b80887257c0",
+      "size": 2234,
+      "lastModifiedTime": 1781063841045
+    }
+  ],
+  "target_exec_meta_info": {
+    "file": "/Users/nidula/Desktop/project Aegis/choreo-integration/target/backup/bin/aegis_disaster_alert.jar",
+    "hash": "bf37a3adbc678e3481e4fc28bf91cfee9eb166b702a4eb88827bf3852340bb55",
+    "size": 55907762,
+    "lastModifiedTime": 1781063863507
+  },
+  "settings_meta_info": {
+    "file": "/Users/nidula/.ballerina/Settings.toml",
+    "hash": "21a5eeabd1812628e56125098a2f45bf6030bf06c720fc1abec1425787087362",
+    "size": 1311,
+    "lastModifiedTime": 1780888295182
+  },
+  "ballerina_toml_meta_info": {
+    "file": "/Users/nidula/Desktop/project Aegis/choreo-integration/Ballerina.toml",
+    "hash": "e03dfb15f8b0eae64ac601c4292b4a93d8a0cf78ab72ac3268cc947bd6f223fa",
+    "size": 213,
+    "lastModifiedTime": 1781063444790
+  },
+  "imports": [
+    "ballerina/http",
+    "ballerina/log",
+    "ballerinax/twilio"
+  ]
+}
