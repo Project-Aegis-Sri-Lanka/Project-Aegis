@@ -1,0 +1,9 @@
+schemaVersion: 1.0
+endpoints:
+  - name: Aegis Alert Endpoint
+    port: 8090
+    type: REST
+    networkVisibilities:
+      - Public
+    context: /aegis
+    schemaFilePath: ../openapi.yaml
