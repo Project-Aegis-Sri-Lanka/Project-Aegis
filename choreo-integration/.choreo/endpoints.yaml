@@ -1,0 +1,8 @@
+version: 0.1
+endpoints:
+  - name: Aegis Alert Endpoint
+    port: 8090
+    type: REST
+    networkVisibilities:
+      - Public
+    context: /aegis
