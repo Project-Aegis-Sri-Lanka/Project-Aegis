@@ -2,10 +2,28 @@ openapi: "3.0.0"
 info:
   title: "Aegis Disaster Alert API"
   version: "1.0.0"
+  description: "Real-time disaster alert service for Project Aegis"
+
 paths:
-  /alert:
+  /aegis/health:
+    get:
+      summary: "Health check endpoint"
+      operationId: "getHealth"
+      responses:
+        "200":
+          description: "Service is healthy"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+
+  /aegis/alert:
     post:
-      summary: "Receive disaster alert from Supabase"
+      summary: "Receive critical disaster alert from Supabase"
       operationId: "receiveAlert"
       requestBody:
         required: true
@@ -13,6 +31,26 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                record:
+                  type: object
+                  properties:
+                    severity:
+                      type: integer
+                    title:
+                      type: string
+                    reporter_name:
+                      type: string
+                    latitude:
+                      type: number
+                    longitude:
+                      type: number
       responses:
         "200":
-          description: "OK"
+          description: "Alert processed successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: "Internal server error"
