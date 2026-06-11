@@ -1,7 +1,6 @@
 schemaVersion: 1.2
 buildpack:
-  name: Dockerfile
-  dockerfile: Dockerfile
+  name: NodeJS
 endpoints:
   - name: aegis-alert
     displayName: Aegis Alert Endpoint
