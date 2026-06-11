@@ -1,13 +1,5 @@
-import express from 'express';
-import twilio from 'twilio';
-
-process.on('uncaughtException', (err) => {
-    console.error('Uncaught Exception:', err);
-});
-
-process.on('unhandledRejection', (err) => {
-    console.error('Unhandled Rejection:', err);
-});
+const express = require('express');
+const twilio = require('twilio');
 
 const app = express();
 app.use(express.json());
