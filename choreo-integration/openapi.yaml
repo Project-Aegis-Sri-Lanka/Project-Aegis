@@ -3,12 +3,10 @@ info:
   title: "Aegis Disaster Alert API"
   version: "1.0.0"
   description: "Real-time disaster alert service for Project Aegis"
-
-x-wso2-disable-security: true
-
 paths:
   /health:
     get:
+      x-wso2-disable-security: true
       summary: "Health check endpoint"
       operationId: "getHealth"
       responses:
@@ -25,6 +23,7 @@ paths:
 
   /alert:
     post:
+      x-wso2-disable-security: true
       summary: "Receive critical disaster alert from Supabase"
       operationId: "receiveAlert"
       requestBody:
@@ -54,5 +53,9 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
         "500":
           description: "Internal server error"
