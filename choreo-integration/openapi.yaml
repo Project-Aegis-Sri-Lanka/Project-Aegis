@@ -5,7 +5,7 @@ info:
   description: "Real-time disaster alert service for Project Aegis"
 
 paths:
-  /aegis/health:
+  /health:
     get:
       summary: "Health check endpoint"
       operationId: "getHealth"
@@ -21,7 +21,7 @@ paths:
                     type: string
                     example: "healthy"
 
-  /aegis/alert:
+  /alert:
     post:
       summary: "Receive critical disaster alert from Supabase"
       operationId: "receiveAlert"
