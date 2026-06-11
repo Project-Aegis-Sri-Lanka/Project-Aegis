@@ -40,4 +40,4 @@ Immediate response required.`;
     }
 });
 
-app.listen(8080, () => console.log('Aegis alert service running on port 8090'));
+app.listen(8080, () => console.log('Aegis alert service running on port 8080'));
