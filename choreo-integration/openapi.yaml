@@ -3,7 +3,7 @@ info:
   title: "Aegis Disaster Alert API"
   version: "1.0.0"
 paths:
-  /aegis/alert:
+  /alert:
     post:
       summary: "Receive disaster alert from Supabase"
       operationId: "receiveAlert"
