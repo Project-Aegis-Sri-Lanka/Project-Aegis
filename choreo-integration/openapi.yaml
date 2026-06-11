@@ -4,6 +4,8 @@ info:
   version: "1.0.0"
   description: "Real-time disaster alert service for Project Aegis"
 
+x-wso2-disable-security: true
+
 paths:
   /health:
     get:

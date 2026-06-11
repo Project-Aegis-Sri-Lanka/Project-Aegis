@@ -9,11 +9,11 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const fromMobile = process.env.TWILIO_FROM_MOBILE;
 const toMobile = process.env.TWILIO_TO_MOBILE;
 
-app.get('/health', (req, res) => {
+app.get(['/health', '/aegis/health'], (req, res) => {
     res.status(200).send('OK');
 });
 
-app.post('/alert', async (req, res) => {
+app.post(['/alert', '/aegis/alert'], async (req, res) => {
     const record = req.body.record;
     if (!record || record.severity < 5) {
         return res.status(200).send('OK');
