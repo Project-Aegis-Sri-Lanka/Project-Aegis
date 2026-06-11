@@ -6,14 +6,10 @@ app.use(express.json());
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const fromMobile = process.env.TWILIO_FROM_MOBILE;
 const toMobile = process.env.TWILIO_TO_MOBILE;
 
-console.log('Starting with config:', {
-    accountSid: accountSid ? 'SET' : 'NOT SET',
-    authToken: authToken ? 'SET' : 'NOT SET',
-    fromMobile: fromMobile ? 'SET' : 'NOT SET',
-    toMobile: toMobile ? 'SET' : 'NOT SET'
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
 });
 
 app.post('/alert', async (req, res) => {
@@ -33,13 +29,13 @@ Immediate response required.`;
         const client = twilio(accountSid, authToken);
         await client.messages.create({
             body: smsBody,
-            from: fromMobile,
-            to: toMobile
+            from: 'whatsapp:+14155238886',
+            to: `whatsapp:${toMobile}`
         });
-        console.log('SMS sent successfully');
+        console.log('WhatsApp message sent successfully');
         res.status(200).send('OK');
     } catch (err) {
-        console.error('SMS failed:', err);
+        console.error('WhatsApp failed:', err);
         res.status(500).send('Error');
     }
 });
