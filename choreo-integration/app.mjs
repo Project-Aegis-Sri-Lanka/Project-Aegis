@@ -1,6 +1,14 @@
 import express from 'express';
 import twilio from 'twilio';
 
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (err) => {
+    console.error('Unhandled Rejection:', err);
+});
+
 const app = express();
 app.use(express.json());
 
@@ -8,6 +16,13 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const fromMobile = process.env.TWILIO_FROM_MOBILE;
 const toMobile = process.env.TWILIO_TO_MOBILE;
+
+console.log('Starting with config:', {
+    accountSid: accountSid ? 'SET' : 'NOT SET',
+    authToken: authToken ? 'SET' : 'NOT SET',
+    fromMobile: fromMobile ? 'SET' : 'NOT SET',
+    toMobile: toMobile ? 'SET' : 'NOT SET'
+});
 
 app.post('/alert', async (req, res) => {
     const record = req.body.record;
