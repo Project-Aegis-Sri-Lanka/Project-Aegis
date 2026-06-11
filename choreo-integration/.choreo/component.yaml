@@ -7,7 +7,7 @@ endpoints:
     service:
       basePath: /aegis
       port: 8080
-      type: REST
-      networkVisibilities:
-        - Public
-      schemaFilePath: openapi.yaml
+    type: REST
+    networkVisibilities:
+      - Public
+    schemaFilePath: openapi.yaml
