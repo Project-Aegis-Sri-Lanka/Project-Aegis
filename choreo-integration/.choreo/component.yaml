@@ -1,12 +1,20 @@
-schemaVersion: 1.0
-
-endpoints:
-  - name: aegis-alert
-    displayName: Aegis Alert Endpoint
-    service:
-      basePath: /aegis
-      port: 8090
-    type: REST
-    networkVisibilities:
-      - Public
-    schemaFilePath: openapi.yaml
+schemaVersion: 1.2
+components:
+  - name: aegis-disaster-alert
+    type: service
+    build:
+      buildPack:
+        language: NodeJS
+        languageVersion: 20.x.x
+    run:
+      command: node app.js
+    endpoints:
+      - name: aegis-alert
+        displayName: Aegis Alert Endpoint
+        service:
+          basePath: /aegis
+          port: 8090
+        type: REST
+        networkVisibilities:
+          - Public
+        schemaFilePath: openapi.yaml
