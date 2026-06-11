@@ -6,6 +6,7 @@ app.use(express.json());
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const fromMobile = process.env.TWILIO_FROM_MOBILE;
 const toMobile = process.env.TWILIO_TO_MOBILE;
 
 app.get('/health', (req, res) => {
@@ -29,7 +30,7 @@ Immediate response required.`;
         const client = twilio(accountSid, authToken);
         await client.messages.create({
             body: smsBody,
-            from: 'whatsapp:+14155238886',
+            from: `whatsapp:${fromMobile}`,
             to: `whatsapp:${toMobile}`
         });
         console.log('WhatsApp message sent successfully');
